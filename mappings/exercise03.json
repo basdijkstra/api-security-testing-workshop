@@ -1,0 +1,110 @@
+{
+	"mappings": [
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"request": {
+				"method": "GET",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 3456,
+					"to": "Max Verstappen",
+					"amount": 180.00, 
+					"reason": "exceeding the speed limit"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"newScenarioState": "Fine deleted",
+			"request": {
+				"method": "DELETE",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 204
+			}
+		},		
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"request": {
+				"method": "POST",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 405
+			}
+		},				
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"request": {
+				"method": "PUT",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 405
+			}
+		},				
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"request": {
+				"method": "PATCH",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Fine deleted",
+			"request": {
+				"method": "GET",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				}
+			},
+			"response": {
+				"status": 404
+			}
+		}
+	]
+}

@@ -1,0 +1,91 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v1/shop/bobs_burgers/sales"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 998877,
+					"shop": "Bob's Burgers",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 100000
+						},
+						{
+							"year": 2023,
+							"revenue": 80000
+						}
+					]
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v1/shop/krusty_burger/sales"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 665544,
+					"shop": "Krusty Burger",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 40000
+						},
+						{
+							"year": 2023,
+							"revenue": 60000
+						}
+					]
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v2/shop/bobs_burgers/sales"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 998877,
+					"shop": "Bob's Burgers",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 100000
+						},
+						{
+							"year": 2023,
+							"revenue": 80000
+						}
+					]
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v2/shop/krusty_burger/sales"
+			},
+			"response": {
+				"status": 404
+			}
+		}
+	]
+}

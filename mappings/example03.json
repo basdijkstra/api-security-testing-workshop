@@ -1,0 +1,87 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v1/invite/abcd"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": "abcd",
+					"email": "user@system.com",
+					"role": "user"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"url": "/v1/invite/new",
+				"bodyPatterns" : [ {
+					"equalToJson" : { "email": "user@system.com", "role": "admin" }
+				} ]
+			},
+			"response": {
+				"status": 201,
+				"jsonBody": {
+					"id": "defg",
+					"email": "user@system.com",
+					"role": "admin"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v1/invite/defg"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": "defg",
+					"email": "user@system.com",
+					"role": "admin"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/v2/invite/abcd"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": "abcd",
+					"email": "user@system.com",
+					"role": "user"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},		
+		{
+			"request": {
+				"method": "POST",
+				"url": "/v2/invite/new",
+				"bodyPatterns" : [ {
+					"equalToJson" : { "email": "user@system.com", "role": "admin" }
+				} ]
+			},
+			"response": {
+				"status": 405
+			}
+		}
+	]
+}
