@@ -1,0 +1,50 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"method": "GET",
+				"url": "/account/543",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer susies_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 543,
+					"holder": "Susie Jones",
+					"type": "checking", 
+					"balance": 1500.00
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/account/572",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer susies_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 572,
+					"holder": "Andrew Simpson",
+					"type": "savings", 
+					"balance": 98700.00
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		}
+	]
+}
