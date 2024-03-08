@@ -1,0 +1,38 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"method": "POST",
+				"url": "/gameshop/order",
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.quantity == 1)]"
+				} ]
+			},
+			"response": {
+				"status": 201,
+				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"item\": \"{{jsonPath request.body '$.item'}}\", \"quantity\": 1, \"status\": \"accepted\" }",
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"url": "/gameshop/order",
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.quantity > 1)]"
+				} ]
+			},
+			"response": {
+				"status": 400,
+				"jsonBody": {
+					"error": "You can only order 1 of these items"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		}
+	]
+}
