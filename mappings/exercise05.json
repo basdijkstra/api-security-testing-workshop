@@ -1,0 +1,99 @@
+{
+	"mappings": [
+		{
+			"priority": 1,
+			"request": {
+				"method": "POST",
+				"url": "/v2/password",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer password_token"
+					}
+				},
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.oldPassword == 'abcDEF123@')]"
+				},
+				{
+					"matchesJsonPath" : "$[?($.newPassword =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}/i)]"
+				}]
+			},
+			"response": {
+				"status": 201,
+				"jsonBody": {
+					"newPassword": "{{jsonPath request.body '$.newPassword'}}"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"priority": 2,
+			"request": {
+				"method": "POST",
+				"url": "/v2/password",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer password_token"
+					}
+				},				
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.oldPassword == 'abcDEF123@')]"
+				} ]
+			},
+			"response": {
+				"status": 400,
+				"jsonBody": {
+					"error": "New password does not meet minimum security requirements"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"priority": 3,
+			"request": {
+				"method": "POST",
+				"url": "/v2/password",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer password_token"
+					}
+				}
+			},
+			"response": {
+				"status": 400,
+				"jsonBody": {
+					"error": "Current password is incorrect"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"url": "/v1/password",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer password_token"
+					}
+				},
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.oldPassword == 'abcDEF123@')]"
+				}]
+			},
+			"response": {
+				"status": 201,
+				"jsonBody": {
+					"newPassword": "{{jsonPath request.body '$.newPassword'}}"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		}
+	]
+}
