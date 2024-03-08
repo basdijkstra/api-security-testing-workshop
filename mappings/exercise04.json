@@ -5,12 +5,12 @@
 				"method": "POST",
 				"url": "/gameshop/order",
 				"bodyPatterns" : [ {
-					"matchesJsonPath" : "$[?($.quantity == 1)]"
-				} ]
+					"matchesJsonPath" : "$[?($.item == 'FIFA 24')]"
+				}]
 			},
 			"response": {
 				"status": 201,
-				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"item\": \"{{jsonPath request.body '$.item'}}\", \"quantity\": 1, \"status\": \"accepted\" }",
+				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"item\": \"{{jsonPath request.body '$.item'}}\", \"quantity\": {{jsonPath request.body '$.quantity'}}, \"status\": \"accepted\" }",
 				"headers": {
 					"Content-Type": "application/json"
 				}
@@ -21,13 +21,35 @@
 				"method": "POST",
 				"url": "/gameshop/order",
 				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.item == 'Gamma Attack')]"
+				},
+				{
+					"matchesJsonPath" : "$[?($.quantity == 1)]"
+				} ]
+			},
+			"response": {
+				"status": 201,
+				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"item\": \"{{jsonPath request.body '$.item'}}\", \"quantity\": {{jsonPath request.body '$.quantity'}}, \"status\": \"accepted\" }",
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"url": "/gameshop/order",
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.item == 'Gamma Attack')]"
+				},
+				{
 					"matchesJsonPath" : "$[?($.quantity > 1)]"
 				} ]
 			},
 			"response": {
 				"status": 400,
 				"jsonBody": {
-					"error": "You can only order 1 of these items"
+					"error": "You can only order 1 copy of Gamma Attack"
 				},
 				"headers": {
 					"Content-Type": "application/json"
