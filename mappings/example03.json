@@ -3,7 +3,7 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v1/invite/abcd"
+				"url": "/v1/invites/abcd"
 			},
 			"response": {
 				"status": 200,
@@ -20,7 +20,7 @@
 		{
 			"request": {
 				"method": "POST",
-				"url": "/v1/invite/new",
+				"url": "/v1/invites/new",
 				"bodyPatterns" : [ {
 					"equalToJson" : { "email": "user@system.com", "role": "admin" }
 				} ]
@@ -40,7 +40,7 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v1/invite/defg"
+				"url": "/v1/invites/defg"
 			},
 			"response": {
 				"status": 200,
@@ -57,7 +57,7 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v2/invite/abcd"
+				"url": "/v2/invites/abcd"
 			},
 			"response": {
 				"status": 200,
@@ -74,7 +74,7 @@
 		{
 			"request": {
 				"method": "POST",
-				"url": "/v2/invite/new",
+				"url": "/v2/invites/new",
 				"bodyPatterns" : [ {
 					"equalToJson" : { "email": "user@system.com", "role": "admin" }
 				} ]
