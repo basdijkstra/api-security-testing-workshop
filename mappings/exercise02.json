@@ -45,6 +45,52 @@
 					"Content-Type": "application/json"
 				}
 			}
+		},
+		{
+			"request": {
+				"method": "DELETE",
+				"url": "/account/543",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer susies_token"
+					}
+				}
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PATCH",
+				"url": "/account/543",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer susies_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"body": "{\"id\": 543, \"holder\": \"Susie Jones\", \"type\": \"checking\", \"balance\": {{jsonPath request.body '$.balance'}} }",
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},		
+		{
+			"request": {
+				"method": "DELETE",
+				"url": "/account/572",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer susies_token"
+					}
+				}
+			},
+			"response": {
+				"status": 405
+			}
 		}
 	]
 }
