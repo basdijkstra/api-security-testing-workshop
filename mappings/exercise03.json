@@ -28,18 +28,40 @@
 		{
 			"scenarioName": "Fines",
             "requiredScenarioState": "Started",
-			"newScenarioState": "Fine deleted",
 			"request": {
-				"method": "DELETE",
+				"method": "PATCH",
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
 						"equalTo": "Bearer readonly_token"
 					}
-				}
+				},
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.amount != '0.00')]"
+				}]
 			},
 			"response": {
-				"status": 204
+				"status": 304
+			}
+		},
+		{
+			"scenarioName": "Fines",
+            "requiredScenarioState": "Started",
+			"newScenarioState": "Fine set to 0",
+			"request": {
+				"method": "PATCH",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer readonly_token"
+					}
+				},
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.amount == '0.00')]"
+				}]
+			},
+			"response": {
+				"status": 200
 			}
 		},		
 		{
@@ -78,7 +100,7 @@
 			"scenarioName": "Fines",
             "requiredScenarioState": "Started",
 			"request": {
-				"method": "PATCH",
+				"method": "DELETE",
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
@@ -92,7 +114,7 @@
 		},
 		{
 			"scenarioName": "Fines",
-            "requiredScenarioState": "Fine deleted",
+            "requiredScenarioState": "Fine set to 0",
 			"request": {
 				"method": "GET",
 				"url": "/fines/3456",
