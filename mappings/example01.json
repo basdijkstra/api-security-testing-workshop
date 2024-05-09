@@ -3,7 +3,7 @@
 		{
 			"request": {
 				"method": "POST",
-				"urlPath": "/v2/order",
+				"urlPath": "/v2/account",
 				"queryParameters": {
 					"type": {
 						"contains": "<script>"
@@ -23,15 +23,11 @@
 		{
 			"request": {
 				"method": "POST",
-				"urlPath": "/v1/order"
+				"urlPath": "/v1/account"
 			},
 			"response": {
 				"status": 201,
-				"jsonBody": {
-					"id": 123,
-					"type": "{{request.query.type}}",
-					"balance": 0
-				},
+				"body": "{\"id\": {{randomValue length=3 type='NUMERIC'}}, \"type\": \"{{request.query.type}}\", \"balance\": 0 }",
 				"headers": {
 					"Content-Type": "application/json"
 				}
