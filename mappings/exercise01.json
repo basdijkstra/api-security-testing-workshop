@@ -17,24 +17,6 @@
 					"Content-Type": "application/json"
 				}
 			}
-		},
-		{
-			"request": {
-				"method": "GET",
-				"url": "/student/123"
-			},
-			"response": {
-				"status": 200,
-				"jsonBody": {
-					"id": 123,
-					"firstName": "John",
-					"lastName": "Smith",
-					"major": "<script>alert('Test');</script>"
-				},
-				"headers": {
-					"Content-Type": "application/json"
-				}
-			}
 		}
 	]
 }
