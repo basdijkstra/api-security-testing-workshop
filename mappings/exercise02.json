@@ -1,6 +1,7 @@
 {
 	"mappings": [
 		{
+			"priority": 1,
 			"request": {
 				"method": "GET",
 				"url": "/account/543",
@@ -24,6 +25,7 @@
 			}
 		},
 		{
+			"priority": 1,
 			"request": {
 				"method": "GET",
 				"url": "/account/572",
@@ -47,14 +49,42 @@
 			}
 		},
 		{
+			"priority": 2,
 			"request": {
-				"method": "DELETE",
-				"url": "/account/543",
+				"method": "GET",
+				"urlPattern": "/account/.*",
 				"headers": {
 					"Authorization": {
 						"equalTo": "Bearer susies_token"
 					}
 				}
+			},
+			"response": {
+				"status": 404
+			}
+		},
+		{
+			"request": {
+				"method": "DELETE",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PUT",
+				"urlPattern": "/account/.*"
 			},
 			"response": {
 				"status": 405
@@ -63,30 +93,7 @@
 		{
 			"request": {
 				"method": "PATCH",
-				"url": "/account/543",
-				"headers": {
-					"Authorization": {
-						"equalTo": "Bearer susies_token"
-					}
-				}
-			},
-			"response": {
-				"status": 200,
-				"body": "{\"id\": 543, \"holder\": \"Susie Jones\", \"type\": \"checking\", \"balance\": {{jsonPath request.body '$.balance'}} }",
-				"headers": {
-					"Content-Type": "application/json"
-				}
-			}
-		},		
-		{
-			"request": {
-				"method": "DELETE",
-				"url": "/account/572",
-				"headers": {
-					"Authorization": {
-						"equalTo": "Bearer susies_token"
-					}
-				}
+				"urlPattern": "/account/.*"
 			},
 			"response": {
 				"status": 405
