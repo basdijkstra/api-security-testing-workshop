@@ -34,7 +34,12 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v1/shop/krusty_burger/sales"
+				"url": "/v1/shop/krusty_burger/sales",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer bobs_token"
+					}
+				}
 			},
 			"response": {
 				"status": 200,
@@ -60,7 +65,12 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v2/shop/bobs_burgers/sales"
+				"url": "/v2/shop/bobs_burgers/sales",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer bobs_token"
+					}
+				}
 			},
 			"response": {
 				"status": 200,
@@ -86,7 +96,12 @@
 		{
 			"request": {
 				"method": "GET",
-				"url": "/v2/shop/krusty_burger/sales"
+				"url": "/v2/shop/krusty_burger/sales",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer bobs_token"
+					}
+				}
 			},
 			"response": {
 				"status": 404
