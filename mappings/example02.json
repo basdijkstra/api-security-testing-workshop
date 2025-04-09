@@ -1,30 +1,23 @@
 {
 	"mappings": [
 		{
+			"priority": 1,
 			"request": {
 				"method": "GET",
-				"url": "/v1/shop/bobs_burgers/sales",
+				"url": "/account/543",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer bobs_token"
+						"equalTo": "Bearer susies_token"
 					}
 				}
 			},
 			"response": {
 				"status": 200,
 				"jsonBody": {
-					"id": 998877,
-					"shop": "Bob's Burgers",
-					"sales": [
-						{
-							"year": 2022,
-							"revenue": 100000
-						},
-						{
-							"year": 2023,
-							"revenue": 80000
-						}
-					]
+					"id": 543,
+					"holder": "Susie Jones",
+					"type": "checking", 
+					"balance": 1500.00
 				},
 				"headers": {
 					"Content-Type": "application/json"
@@ -32,30 +25,23 @@
 			}
 		},
 		{
+			"priority": 1,
 			"request": {
 				"method": "GET",
-				"url": "/v1/shop/krusty_burger/sales",
+				"url": "/account/572",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer bobs_token"
+						"equalTo": "Bearer susies_token"
 					}
 				}
 			},
 			"response": {
 				"status": 200,
 				"jsonBody": {
-					"id": 665544,
-					"shop": "Krusty Burger",
-					"sales": [
-						{
-							"year": 2022,
-							"revenue": 40000
-						},
-						{
-							"year": 2023,
-							"revenue": 60000
-						}
-					]
+					"id": 572,
+					"holder": "Andrew Simpson",
+					"type": "savings", 
+					"balance": 98700.00
 				},
 				"headers": {
 					"Content-Type": "application/json"
@@ -63,48 +49,54 @@
 			}
 		},
 		{
+			"priority": 2,
 			"request": {
 				"method": "GET",
-				"url": "/v2/shop/bobs_burgers/sales",
+				"urlPattern": "/account/.*",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer bobs_token"
-					}
-				}
-			},
-			"response": {
-				"status": 200,
-				"jsonBody": {
-					"id": 998877,
-					"shop": "Bob's Burgers",
-					"sales": [
-						{
-							"year": 2022,
-							"revenue": 100000
-						},
-						{
-							"year": 2023,
-							"revenue": 80000
-						}
-					]
-				},
-				"headers": {
-					"Content-Type": "application/json"
-				}
-			}
-		},
-		{
-			"request": {
-				"method": "GET",
-				"url": "/v2/shop/krusty_burger/sales",
-				"headers": {
-					"Authorization": {
-						"equalTo": "Bearer bobs_token"
+						"equalTo": "Bearer susies_token"
 					}
 				}
 			},
 			"response": {
 				"status": 404
+			}
+		},
+		{
+			"request": {
+				"method": "DELETE",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PUT",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PATCH",
+				"urlPattern": "/account/.*"
+			},
+			"response": {
+				"status": 405
 			}
 		}
 	]

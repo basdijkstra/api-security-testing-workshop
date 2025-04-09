@@ -4,20 +4,33 @@
 			"priority": 1,
 			"request": {
 				"method": "GET",
-				"url": "/account/543",
+				"url": "/shop",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer susies_token"
+						"equalTo": "Bearer bobs_token"
 					}
 				}
 			},
 			"response": {
 				"status": 200,
 				"jsonBody": {
-					"id": 543,
-					"holder": "Susie Jones",
-					"type": "checking", 
-					"balance": 1500.00
+					"shops": [
+						{
+							"id": "bobs_burgers",
+							"name": "Bob's Burgers",
+							"established": 1997
+						},
+						{
+							"id": "krusty_burger",
+							"name": "Krusty Burger",
+							"established": 1983
+						},
+						{
+							"id": "peach_pit",
+							"name": "The Peach Pit",
+							"established": 1995
+						}
+					]
 				},
 				"headers": {
 					"Content-Type": "application/json"
@@ -28,20 +41,104 @@
 			"priority": 1,
 			"request": {
 				"method": "GET",
-				"url": "/account/572",
+				"url": "/shop/bobs_burgers/sales",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer susies_token"
+						"equalTo": "Bearer bobs_token"
 					}
 				}
 			},
 			"response": {
 				"status": 200,
 				"jsonBody": {
-					"id": 572,
-					"holder": "Andrew Simpson",
-					"type": "savings", 
-					"balance": 98700.00
+					"id": "bobs_burgers",
+					"shop": "Bob's Burgers",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 100000
+						},
+						{
+							"year": 2023,
+							"revenue": 80000
+						},
+						{
+							"year": 2024,
+							"revenue": 72000
+						}
+					]
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"priority": 1,
+			"request": {
+				"method": "GET",
+				"url": "/shop/krusty_burger/sales",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer bobs_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": "krusty_burger",
+					"shop": "Krusty Burger",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 65000
+						},
+						{
+							"year": 2023,
+							"revenue": 68000
+						},
+						{
+							"year": 2024,
+							"revenue": 74000
+						}
+					]
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"priority": 1,
+			"request": {
+				"method": "GET",
+				"url": "/shop/peach_pit/sales",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer bobs_token"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": "peach_pit",
+					"shop": "The Peach Pit",
+					"sales": [
+						{
+							"year": 2022,
+							"revenue": 125000
+						},
+						{
+							"year": 2023,
+							"revenue": 127000
+						},
+						{
+							"year": 2024,
+							"revenue": 144000
+						}
+					]
 				},
 				"headers": {
 					"Content-Type": "application/json"
@@ -52,12 +149,7 @@
 			"priority": 2,
 			"request": {
 				"method": "GET",
-				"urlPattern": "/account/.*",
-				"headers": {
-					"Authorization": {
-						"equalTo": "Bearer susies_token"
-					}
-				}
+				"urlPattern": "/shop/.*/sales"
 			},
 			"response": {
 				"status": 404
@@ -66,7 +158,7 @@
 		{
 			"request": {
 				"method": "DELETE",
-				"urlPattern": "/account/.*"
+				"urlPattern": "/shop/.*"
 			},
 			"response": {
 				"status": 405
@@ -75,7 +167,7 @@
 		{
 			"request": {
 				"method": "POST",
-				"urlPattern": "/account/.*"
+				"urlPattern": "/shop/.*"
 			},
 			"response": {
 				"status": 405
@@ -84,7 +176,7 @@
 		{
 			"request": {
 				"method": "PUT",
-				"urlPattern": "/account/.*"
+				"urlPattern": "/shop/.*"
 			},
 			"response": {
 				"status": 405
@@ -93,7 +185,7 @@
 		{
 			"request": {
 				"method": "PATCH",
-				"urlPattern": "/account/.*"
+				"urlPattern": "/shop/.*"
 			},
 			"response": {
 				"status": 405
