@@ -27,6 +27,25 @@
 			"priority": 2,
 			"request": {
 				"method": "POST",
+				"urlPath": "/user",
+				"queryParameters": {
+					"username": {
+						"doesNotMatch": "^([A-Za-z0-9]+)$"
+					}
+				}
+			},
+			"response": {
+				"status": 400,
+				"body": "{\"error\": \"A username can only contain upper- or lowercase characters and numbers from 0-9\" }",
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"priority": 3,
+			"request": {
+				"method": "POST",
 				"urlPath": "/user"
 			},
 			"response": {
@@ -34,6 +53,54 @@
 				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"username\": \"{{request.query.username}}\" }",
 				"headers": {
 					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PUT",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "PATCH",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "DELETE",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 405
+			}
+		},
+		{
+			"request": {
+				"method": "OPTIONS",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 204,
+				"headers": {
+					"Allow": "OPTIONS, POST"
 				}
 			}
 		}
