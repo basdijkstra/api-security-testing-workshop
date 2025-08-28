@@ -9,7 +9,7 @@
 				"status": 200,
 				"jsonBody": {
 					"id": 123,
-					"name": ""
+					"name": "Anna"
 				},
 				"headers": {
 					"Content-Type": "application/json",
