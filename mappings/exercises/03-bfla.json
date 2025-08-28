@@ -8,7 +8,7 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				}
 			},
@@ -17,8 +17,9 @@
 				"jsonBody": {
 					"id": 3456,
 					"to": "Max Verstappen",
-					"amount": 180.00, 
-					"reason": "exceeding the speed limit"
+					"amount_due": 368.00,
+					"reason": "exceeding the speed limit",
+					"status": "open"
 				},
 				"headers": {
 					"Content-Type": "application/json"
@@ -33,11 +34,11 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				},
 				"bodyPatterns" : [ {
-					"matchesJsonPath" : "$[?($.amount != '0.00')]"
+					"matchesJsonPath" : "$[?($.amount_due != '0.00')]"
 				}]
 			},
 			"response": {
@@ -53,15 +54,25 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				},
 				"bodyPatterns" : [ {
-					"matchesJsonPath" : "$[?($.amount == '0.00')]"
+					"matchesJsonPath" : "$[?($.amount_due == '0.00')]"
 				}]
 			},
 			"response": {
-				"status": 200
+				"status": 200,
+				"jsonBody": {
+					"id": 3456,
+					"to": "Max Verstappen",
+					"amount_due": 0.00,
+					"reason": "exceeding the speed limit",
+					"status": "paid"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
 			}
 		},		
 		{
@@ -72,7 +83,7 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				}
 			},
@@ -88,7 +99,7 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				}
 			},
@@ -104,7 +115,7 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				}
 			},
@@ -120,12 +131,22 @@
 				"url": "/fines/3456",
 				"headers": {
 					"Authorization": {
-						"equalTo": "Bearer readonly_token"
+						"equalTo": "Bearer max_token_readonly"
 					}
 				}
 			},
 			"response": {
-				"status": 404
+				"status": 200,
+				"jsonBody": {
+					"id": 3456,
+					"to": "Max Verstappen",
+					"amount_due": 0.00,
+					"reason": "exceeding the speed limit",
+					"status": "paid"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				}
 			}
 		}
 	]
