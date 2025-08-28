@@ -1,0 +1,23 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"method": "GET",
+				"urlPath": "/user/123"
+			},
+			"response": {
+				"status": 200,
+				"jsonBody": {
+					"id": 123,
+					"name": ""
+				},
+				"headers": {
+					"Content-Type": "application/json",
+					"Date": "Mon, 06 Oct 2025 09:10:11 GMT",
+					"Server": "nginx/1.23.0",
+					"X-Powered-By": "PHP/8.2.8"
+				}
+			}
+		}
+	]
+}
