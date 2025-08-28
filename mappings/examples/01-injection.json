@@ -7,12 +7,7 @@
 			},
 			"response": {
 				"status": 201,
-				"jsonBody": {
-					"id": 123,
-					"firstName": "{{jsonPath request.body '$.firstName'}}",
-					"lastName": "{{jsonPath request.body '$.lastName'}}",
-					"major": "{{jsonPath request.body '$.major'}}"
-				},
+				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"firstName\": \"{{jsonPath request.body '$.firstName'}}\", \"lastName\": \"{{jsonPath request.body '$.lastName'}}\", \"major\": \"{{jsonPath request.body '$.major'}}\" }",
 				"headers": {
 					"Content-Type": "application/json"
 				}
