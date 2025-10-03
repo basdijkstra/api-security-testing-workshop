@@ -3,7 +3,12 @@
 		{
 			"request": {
 				"method": "GET",
-				"urlPath": "/user/123"
+				"urlPath": "/user/123",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer user_token"
+					}
+				}
 			},
 			"response": {
 				"status": 200,
