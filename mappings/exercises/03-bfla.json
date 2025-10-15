@@ -125,6 +125,25 @@
 		},
 		{
 			"scenarioName": "Fines",
+			"requiredScenarioState": "Started",
+			"request": {
+				"method": "OPTIONS",
+				"url": "/fines/3456",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer max_token_readonly"
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Allow": "GET, PATCH"
+				}
+			}
+		},
+		{
+			"scenarioName": "Fines",
             "requiredScenarioState": "Fine set to 0",
 			"request": {
 				"method": "GET",
