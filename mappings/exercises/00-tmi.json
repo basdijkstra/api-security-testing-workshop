@@ -5,6 +5,11 @@
 			"request": {
 				"method": "POST",
 				"urlPath": "/user",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer student_admin"
+					}
+				},
 				"queryParameters": {
 					"username": {
 						"or": [
@@ -28,6 +33,11 @@
 			"request": {
 				"method": "POST",
 				"urlPath": "/user",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer student_admin"
+					}
+				},
 				"queryParameters": {
 					"username": {
 						"doesNotMatch": "^([A-Za-z0-9]+)$"
@@ -46,7 +56,12 @@
 			"priority": 3,
 			"request": {
 				"method": "POST",
-				"urlPath": "/user"
+				"urlPath": "/user",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer student_admin"
+					}
+				}
 			},
 			"response": {
 				"status": 201,
@@ -54,6 +69,16 @@
 				"headers": {
 					"Content-Type": "application/json"
 				}
+			}
+		},
+		{
+			"priority": 4,
+			"request": {
+				"method": "POST",
+				"urlPath": "/user"
+			},
+			"response": {
+				"status": 401
 			}
 		},
 		{
