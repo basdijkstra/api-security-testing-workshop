@@ -19,7 +19,7 @@
 				"headers": {
 					"Content-Type": "application/json",
 					"Date": "Mon, 06 Oct 2025 09:10:11 GMT",
-					"Server": "Apache/2.4.65 (Unix)",
+					"Server": "nginx/1.23.0",
 					"X-Powered-By": "PHP/8.2.8"
 				}
 			}
