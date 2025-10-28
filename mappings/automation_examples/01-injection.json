@@ -1,0 +1,44 @@
+{
+	"mappings": [
+		{
+			"priority": 1,
+			"request": {
+				"method": "POST",
+				"url": "/automation/student",
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.major == '<script>alert(0)</script>')]"
+				}]
+			},
+			"response": {
+				"status": 400
+			}
+		},
+		{
+			"priority": 1,
+			"request": {
+				"method": "POST",
+				"url": "/automation/student",
+				"bodyPatterns" : [ {
+					"matchesJsonPath" : "$[?($.major == '1;DROP TABLE students')]"
+				}]
+			},
+			"response": {
+				"status": 400
+			}
+		},
+		{
+			"priority": 2,
+			"request": {
+				"method": "POST",
+				"url": "/automation/student"
+			},
+			"response": {
+				"status": 201,
+				"body": "{\"id\": {{randomValue length=4 type='NUMERIC'}}, \"firstName\": \"{{jsonPath request.body '$.firstName'}}\", \"lastName\": \"{{jsonPath request.body '$.lastName'}}\", \"major\": \"{{jsonPath request.body '$.major'}}\" }",
+				"headers": {
+					"Content-Type": "application/json"
+				}
+			}
+		}
+	]
+}
