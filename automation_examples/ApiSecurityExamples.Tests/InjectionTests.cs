@@ -5,7 +5,7 @@ using static RestAssured.Dsl;
 namespace ApiSecurityExamples.Tests
 {
     [TestFixture]
-    public class Tests
+    public class InjectionTests
     {
         private RequestSpecification requestSpecification;
 
@@ -30,6 +30,7 @@ namespace ApiSecurityExamples.Tests
                 major = valueToInject
             };
 
+            // Check that malicious content cannot be injected
             Given()
                 .Spec(this.requestSpecification)
                 .Body(injectionStudent)
@@ -37,6 +38,14 @@ namespace ApiSecurityExamples.Tests
                 .Post("/automation/student")
                 .Then()
                 .StatusCode(HttpStatusCode.BadRequest);
+
+            // Check that no student is created after attempting to inject the malicious input
+            Given()
+                .Spec(this.requestSpecification)
+                .When()
+                .Get("/automation/student/John")
+                .Then()
+                .StatusCode(HttpStatusCode.NotFound); 
         }
     }
 }

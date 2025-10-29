@@ -39,6 +39,15 @@
 					"Content-Type": "application/json"
 				}
 			}
+		},
+		{
+			"request": {
+				"method": "GET",
+				"url": "/automation/student/John"
+			},
+			"response": {
+				"status": 404
+			}
 		}
 	]
 }
