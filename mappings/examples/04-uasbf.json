@@ -4,8 +4,13 @@
 			"request": {
 				"method": "POST",
 				"url": "/gameshop/order",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer session_token"
+					}
+				},
 				"bodyPatterns" : [ {
-					"matchesJsonPath" : "$[?($.item == 'FIFA 24')]"
+					"matchesJsonPath" : "$[?($.item == 'Super Mario Kart')]"
 				}]
 			},
 			"response": {
@@ -20,6 +25,11 @@
 			"request": {
 				"method": "POST",
 				"url": "/gameshop/order",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer session_token"
+					}
+				},
 				"bodyPatterns" : [ {
 					"matchesJsonPath" : "$[?($.item == 'Gamma Attack')]"
 				},
@@ -39,6 +49,11 @@
 			"request": {
 				"method": "POST",
 				"url": "/gameshop/order",
+				"headers": {
+					"Authorization": {
+						"equalTo": "Bearer session_token"
+					}
+				},
 				"bodyPatterns" : [ {
 					"matchesJsonPath" : "$[?($.item == 'Gamma Attack')]"
 				},
@@ -54,6 +69,22 @@
 				"headers": {
 					"Content-Type": "application/json"
 				}
+			}
+		},
+		{
+			"request": {
+				"method": "POST",
+				"url": "/gameshop/order",
+				"headers": {
+					"Authorization": {
+						"not": {
+							"equalTo": "Bearer session_token"
+						}
+					}
+				}
+			},
+			"response": {
+				"status": 401
 			}
 		}
 	]
