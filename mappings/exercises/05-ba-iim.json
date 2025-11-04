@@ -100,14 +100,33 @@
 			}
 		},
 		{
+			"priority": 5,
+			"request": {
+				"method": "POST",
+				"url": "/v2/password",
+				"headers": {
+					"Authorization": {
+						"or": [
+							{
+								"not": {
+									"equalTo": "Bearer password_token"
+								}
+							},
+							{
+								"absent": true
+							}
+						]
+					}
+				}
+			},
+			"response": {
+				"status": 401
+			}
+		},
+		{
 			"request": {
 				"method": "POST",
 				"url": "/v1/password",
-				"headers": {
-					"Authorization": {
-						"equalTo": "Bearer password_token"
-					}
-				},
 				"bodyPatterns" : [ {
 					"matchesJsonPath" : "$[?($.oldPassword == 'abcDEF123@')]"
 				}]
